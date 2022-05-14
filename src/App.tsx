@@ -1,19 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-import { useTranslation } from "react-i18next";
+
+import Top from './pages/top/Top'
+import List from './pages/list/List'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
+
   return (
-    <div className="App">
-      <h1>{t("header.title")}</h1>
-      <button onClick={()=>changeLanguage('de')}>changeLanguage</button>
-      <button onClick={()=>changeLanguage('en')}>changeLanguage</button>
-    </div>
+    <BrowserRouter>
+    <h1>hello</h1>
+    <Link to="/list">to Link</Link>
+    <Link to="/">to Home</Link>
+      <Routes>
+        <Route path="/" element={<Top/>}/>
+        <Route path="/list" element={<List />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 
